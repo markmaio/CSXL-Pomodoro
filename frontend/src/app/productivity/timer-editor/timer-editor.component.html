@@ -1,0 +1,61 @@
+<form [formGroup]="timerForm" (ngSubmit)="onSubmitForm()">
+  <mat-card appearance="outlined">
+    <!-- Header -->
+    <mat-card-header>
+      <mat-card-title *ngIf="isNew">Create Timer</mat-card-title>
+      <mat-card-title *ngIf="!isNew">Update Timer</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <!-- Name -->
+      <mat-form-field appearance="outline" color="accent">
+        <mat-label>Timer Name</mat-label>
+        <input
+          matInput
+          placeholder="Timer Name"
+          formControlName="name"
+          name="name"
+          required />
+      </mat-form-field>
+
+      <!-- Description -->
+      <mat-form-field appearance="outline" color="accent">
+        <mat-label>Description</mat-label>
+        <textarea
+          matInput
+          placeholder="Timer description here."
+          formControlName="description"
+          name="description"></textarea>
+      </mat-form-field>
+
+      <!-- Timer Length -->
+      <mat-form-field appearance="outline" color="accent">
+        <mat-label>Timer Length</mat-label>
+        <input
+          type="number"
+          matInput
+          placeholder="Timer Length (in minutes)"
+          formControlName="timerLength"
+          name="timerLength" />
+      </mat-form-field>
+
+      <!-- Break Length -->
+      <mat-form-field appearance="outline" color="accent">
+        <mat-label>Break Length</mat-label>
+        <input
+          type="number"
+          matInput
+          placeholder="Break Length (in minutes)"
+          formControlName="breakLength"
+          name="breakLength" />
+      </mat-form-field>
+
+      <!-- Save Button -->
+      <mat-card-actions>
+        <button mat-stroked-button type="submit" [disabled]="timerForm.invalid">
+          SAVE
+        </button>
+      </mat-card-actions>
+    </mat-card-content>
+  </mat-card>
+</form>

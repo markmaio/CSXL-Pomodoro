@@ -1,0 +1,34 @@
+<mat-card appearance="outlined">
+  <div *ngIf="(productivityService.timers$ | async)!.length > 0; else notimers">
+    <mat-card-header>
+      <mat-card-title>My Timers</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        You have {{ (productivityService.timers$ | async)!.length }} timer{{
+        (productivityService.timers$ | async)!.length !== 1 ? 's' : '' }}.
+      </p>
+
+      <!-- List of timer widgets -->
+      <timer-widget
+        [timerData]="timer"
+        *ngFor="let timer of (productivityService.timers$ | async)!" />
+    </mat-card-content>
+  </div>
+  <ng-template #notimers>
+    <mat-card-header>
+      <mat-card-title>No Timers</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>You have no timers yet! Create a timer below.</p>
+    </mat-card-content>
+  </ng-template>
+
+  <mat-card-actions>
+    <button
+      mat-stroked-button
+      (click)="router.navigate(['/productivity/edit/new'])">
+      Create Timer
+    </button>
+  </mat-card-actions>
+</mat-card>

@@ -1,0 +1,68 @@
+<mat-card appearance="outlined">
+  <!-- Header -->
+  <mat-card-header>
+    <div class="flex-row">
+      <mat-card-title>{{ timerData.name }}</mat-card-title>
+
+      <!-- Badge -->
+      <div
+        [class]="
+          timerData.timer.state === PomodoroTimerState.IDLE
+            ? 'idle timer-title'
+            : timerData.timer.state === PomodoroTimerState.WORKING
+            ? 'working timer-title'
+            : 'break timer-title'
+        ">
+        <span class="badge">{{
+          timerData.timer.state === PomodoroTimerState.IDLE
+            ? 'Idle'
+            : timerData.timer.state === PomodoroTimerState.WORKING
+            ? 'Working'
+            : 'Break'
+        }}</span>
+      </div>
+    </div>
+  </mat-card-header>
+  <mat-card-content>
+    <p>
+      <strong>Time Remaining:</strong>
+      {{ timerData.timer.countdown$ | async }} second{{
+        (timerData.timer.countdown$ | async) !== 1 ? 's' : ''
+      }}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <div class="flex-row">
+      <!-- Timer Buttons -->
+      <div
+        *ngIf="timerData.timer.state === PomodoroTimerState.IDLE; else pause">
+        <!-- Start Button -->
+        <button
+          mat-stroked-button
+          *ngIf="
+            timerData.timer.previousState === PomodoroTimerState.IDLE;
+            else resume
+          "
+          (click)="timerData.timer.start()">
+          Start
+        </button>
+        <!-- Resume Button -->
+        <ng-template #resume>
+          <button mat-stroked-button (click)="timerData.timer.resume()">
+            Resume
+          </button>
+        </ng-template>
+      </div>
+      <ng-template #pause>
+        <button mat-stroked-button (click)="timerData.timer.pause()">
+          Pause
+        </button>
+      </ng-template>
+
+      <div class="modify-buttons">
+        <button mat-stroked-button (click)="editTimer()">Edit</button>
+        <button mat-stroked-button (click)="deleteTimer()">Delete</button>
+      </div>
+    </div>
+  </mat-card-actions>
+</mat-card>
