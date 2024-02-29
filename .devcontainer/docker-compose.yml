@@ -7,7 +7,7 @@ services:
       dockerfile: .devcontainer/Dockerfile
     volumes:
       - ..:/workspace
-      - csxl.unc.edu-node_modules:/workspace/frontend/node_modules
+      - csxl.unc.edu-ex03-node_modules:/workspace/frontend/node_modules
     command: /bin/sh -c "while sleep 1000; do :; done"
     environment:
       - windir # Defined on Windows but not on other platforms
@@ -19,8 +19,8 @@ services:
     ports:
       - '5432:5432'
     volumes:
-      - csxl.unc.edu-postgres:/var/lib/postgresql/data
+      - csxl.unc.edu-ex03-postgres:/var/lib/postgresql/data
 
 volumes:
-  csxl.unc.edu-node_modules:
-  csxl.unc.edu-postgres:
+  csxl.unc.edu-ex03-node_modules:
+  csxl.unc.edu-ex03-postgres:
