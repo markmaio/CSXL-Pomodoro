@@ -5,7 +5,7 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 from typing import Self
 
 from backend.entities.academics.section_member_entity import SectionMemberEntity
-from backend.entities.pomodoro_entity import PomodoroTimerEntity
+from backend.entities.pomodoro_timer_entity import PomodoroTimerEntity
 from backend.models.academics.section_member import SectionMember
 from .entity_base import EntityBase
 from .user_role_table import user_role_table

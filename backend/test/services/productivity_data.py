@@ -8,9 +8,9 @@ Productivity Service.
 import pytest
 from sqlalchemy.orm import Session
 
-from ...entities.pomodoro_entity import PomodoroTimerEntity
+from ...entities.pomodoro_timer_entity import PomodoroTimerEntity
 
-from ...models.pomodorotimer import PomodoroTimer
+from ...models.pomodoro_timer import PomodoroTimer
 
 from .reset_table_id_seq import reset_table_id_seq
 

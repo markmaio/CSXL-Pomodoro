@@ -5,7 +5,7 @@ The Productivity Service allows the API to manipulate pomodoro timer data in the
 from fastapi import Depends
 from pytest import Session
 from backend.database import db_session
-from backend.entities.pomodoro_entity import PomodoroTimerEntity
+from backend.entities.pomodoro_timer_entity import PomodoroTimerEntity
 
 from backend.models.user import User
 from backend.services.exceptions import (

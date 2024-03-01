@@ -20,7 +20,7 @@ from backend.services.exceptions import (
 import pytest
 
 # Tested Dependencies
-from ...models.pomodorotimer import PomodoroTimer
+from ...models.pomodoro_timer import PomodoroTimer
 from ...services import ProductivityService
 
 # Injected Service Fixtures
