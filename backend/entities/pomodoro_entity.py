@@ -4,7 +4,7 @@ from sqlalchemy import ForeignKey, Integer, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from typing import Self
 
-from backend.models.pomodorotimer import PomodoroTimer
+from backend.models.pomodoro_timer import PomodoroTimer
 from backend.models.user import User
 from .entity_base import EntityBase
 

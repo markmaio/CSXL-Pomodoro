@@ -12,7 +12,7 @@ from backend.services.exceptions import (
     ResourceNotFoundException,
     UserPermissionException,
 )
-from ..models.pomodorotimer import PomodoroTimer
+from ..models.pomodoro_timer import PomodoroTimer
 
 __authors__ = ["Ajay Gandecha", "Jade Keegan"]
 __copyright__ = "Copyright 2024"

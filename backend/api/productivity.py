@@ -6,7 +6,7 @@ from fastapi import APIRouter, Depends
 
 from backend.api.authentication import registered_user
 from backend.models.user import User
-from ..models.pomodorotimer import PomodoroTimer
+from ..models.pomodoro_timer import PomodoroTimer
 from ..services.productivity import ProductivityService
 
 __authors__ = ["Ajay Gandecha"]
