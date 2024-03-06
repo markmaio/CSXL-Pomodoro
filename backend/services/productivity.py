@@ -29,17 +29,23 @@ class ProductivityService:
         """Initializes the `ProductivityService` session"""
         self._session = session
 
-    def get_timers(self) -> list[PomodoroTimer]:
+    def get_timers(self, subject: User) -> list[PomodoroTimer]:
         """
         Retrieves all pomodoro timers for the currently logged in user.
 
         Returns:
             list[PomodoroTimer]: All pomodoro timer data for the currently logged in user.
         """
+
         # TODO: Query the PomodoroTimer table to retrieve the entries associated with the current user.
+        entities = (
+            self._session.query(PomodoroTimerEntity)
+            .where(PomodoroTimerEntity.user_id == subject.id)
+            .all()
+        )
 
         # TODO: Return all the PomodoroTimer entities for the user in the correct format.
-        return ...
+        return [entity.to_model() for entity in entities]
 
     def get_timer(self, timer_id: int) -> PomodoroTimer:
         """Gets one timer by an ID.
@@ -127,3 +133,4 @@ class ProductivityService:
         # TODO: Delete the pomodoro entity from the table/session.
 
         # TODO: Commit the changes to the table/session.
+         #lol
