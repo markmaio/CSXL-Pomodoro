@@ -61,7 +61,7 @@ class UserEntity(EntityBase):
 
     # TODO: Add to establish the one-to-many relationship between the pomodoro and user tables.
     # The pomodoros for the given user.
-    timers: Mapped[list["PomodoroTimerEntity"]] = relationship(back_populations="user")
+    timers: Mapped[list["PomodoroTimerEntity"]] = relationship(back_populates="user")
 
     @classmethod
     def from_model(cls, model: User) -> Self:

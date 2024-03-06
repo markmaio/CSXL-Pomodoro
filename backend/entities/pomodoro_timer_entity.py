@@ -29,7 +29,7 @@ class PomodoroTimerEntity(EntityBase):
     # The user associated with the timer
     # NOTE: This field establishes a one-to-many relationship between the user and timer tables.
     user_id: Mapped[int] = mapped_column(ForeignKey("user.id"))
-    user: Mapped["UserEntity"] = relationship(back_populates="president_for")
+    user: Mapped["UserEntity"] = relationship(back_populates="timers")
 
     @classmethod
     def from_model(cls, subject: User, model: PomodoroTimer) -> Self:
@@ -49,6 +49,7 @@ class PomodoroTimerEntity(EntityBase):
             description=model.description,
             timer_length=model.timer_length,
             break_length=model.break_length,
+            user_id=subject.id
         )
 
     def to_model(self) -> PomodoroTimer:

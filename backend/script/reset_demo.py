@@ -63,6 +63,7 @@ with Session(engine) as session:
     section_data.insert_fake_data(session)
 
     # TODO: Load demo data for the productivity feature into the session.
-    
+    productivity_data.insert_fake_data(session)
+
     # Commit changes to the database
     session.commit()
