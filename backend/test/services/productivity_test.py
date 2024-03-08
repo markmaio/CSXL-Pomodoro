@@ -91,9 +91,40 @@ def test_get_timer_not_user(productivity_svc_integration: ProductivityService):
 def test_update_timer(productivity_svc_integration: ProductivityService):
     """Test that updating a timer properly edits the timer's fields"""
 
+    productivity_svc_integration.create_timer(user, new_timer)
+
+    before_len = len(productivity_svc_integration.get_timers(user))
+    temp_timer = productivity_svc_integration.update_timer(user, updated_timer1)
+    after_len = len(productivity_svc_integration.get_timers(user))
+
+    # test if the return is the same timer
+    assert temp_timer == updated_timer1
+    # test to make sure the count of timers is the same before and after
+    assert before_len == after_len
+    # test to make sure class data is the same
+    assert updated_timer1.id == temp_timer.id
+    assert updated_timer1.name == temp_timer.name
+    assert updated_timer1.description == temp_timer.description
+    assert updated_timer1.timer_length == temp_timer.timer_length
+    assert updated_timer1.break_length == temp_timer.break_length
+    # check return
+    assert (
+        productivity_svc_integration.update_timer(user, updated_timer1)
+        == updated_timer1
+    )
+
 
 def test_update_timer_none_exists(productivity_svc_integration: ProductivityService):
     """Test that attempting to update a timer that does not exist raises a ResourceNotFoundException"""
+    fake_timer = PomodoroTimer(
+        id=50,
+        name="Sample 1",
+        description="Description 1",
+        timer_length=30,
+        break_length=5,
+    )
+    with pytest.raises(ResourceNotFoundException):
+        productivity_svc_integration.update_timer(user, fake_timer)
 
 
 def test_update_timer_not_user(productivity_svc_integration: ProductivityService):

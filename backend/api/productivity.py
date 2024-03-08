@@ -32,6 +32,7 @@ def get_timers(
     Get all pomodoro timers.
 
     Parameters:
+        subject: a valid User model representing the currently logged in User
         productivity_service: a valid ProductivityService
 
     Returns:
@@ -56,6 +57,7 @@ def get_timer(
 
     Parameters:
         id: ID of the timer to get
+        subject: a valid User model representing the currently logged in User
         productivity_service: a valid ProductivityService
     """
 
@@ -77,6 +79,7 @@ def create_timer(
 
     Parameters:
         timer: a valid PomodoroTimer model
+        subject: a valid User model representing the currently logged in User
         productivity_service: a valid ProductivityService
 
     Returns:
@@ -100,6 +103,7 @@ def update_timer(
     Update pomodoro timer.
 
     Parameters:
+        subject: a valid User model representing the currently logged in User
         timer: a valid PomodoroTimer model
         productivity_service: a valid ProductivityService
 
@@ -124,6 +128,7 @@ def delete_timer(
 
     Parameters:
         id: ID of the timer to delete
+        subject: a valid User model representing the currently logged in User
         productivity_service: a valid ProductivityService
     """
 
