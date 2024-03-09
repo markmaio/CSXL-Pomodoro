@@ -130,10 +130,14 @@ class ProductivityService:
                 "productivity.view", f"productivity/{timer.id}"
             )
         # TODO: Update each field of the pomodoro timer object to match the fields of the given timer.
+        print("timer id" + str(timer.id))
+        print("entity id" + str(entity.id))
         entity.name = timer.name
         entity.description = timer.description
         entity.timer_length = timer.timer_length
         entity.break_length = timer.break_length
+        self._session.commit()
+        print("updated entity id" + str(entity.id))
         # TODO: Return the updated pomodoro timer object
         return entity.to_model()
 

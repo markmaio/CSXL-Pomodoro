@@ -105,6 +105,7 @@ def update_timer(
     Parameters:
         subject: a valid User model representing the currently logged in User
         timer: a valid PomodoroTimer model
+        subject: a valid User model representing the currently logged in User
         productivity_service: a valid ProductivityService
 
     Returns:

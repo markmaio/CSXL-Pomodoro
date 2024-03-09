@@ -94,20 +94,13 @@ def test_update_timer(productivity_svc_integration: ProductivityService):
     productivity_svc_integration.create_timer(user, new_timer)
 
     before_len = len(productivity_svc_integration.get_timers(user))
-    temp_timer = productivity_svc_integration.update_timer(user, updated_timer1)
-    after_len = len(productivity_svc_integration.get_timers(user))
+    updated = productivity_svc_integration.update_timer(user, updated_timer1)
+    assert updated == updated_timer1
+    assert len(productivity_svc_integration.get_timers(user)) == before_len
 
-    # test if the return is the same timer
-    assert temp_timer == updated_timer1
-    # test to make sure the count of timers is the same before and after
-    assert before_len == after_len
-    # test to make sure class data is the same
-    assert updated_timer1.id == temp_timer.id
-    assert updated_timer1.name == temp_timer.name
-    assert updated_timer1.description == temp_timer.description
-    assert updated_timer1.timer_length == temp_timer.timer_length
-    assert updated_timer1.break_length == temp_timer.break_length
-    # check return
+    stored = productivity_svc_integration.get_timer(user, updated.id)
+    assert stored == updated_timer1
+    assert stored == updated
     assert (
         productivity_svc_integration.update_timer(user, updated_timer1)
         == updated_timer1
